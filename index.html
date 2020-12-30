@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/fonts/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/src/estilo.css">
+    <title>upMiner - Histórico empresarial</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <header class="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <img src="assets/images/logo_branco.png" alt="" class="img-fluid banner__logo">
+                        <h1 class="banner__titulo">Histórico Empresarial</h1>
+                        <p class="banner__apresentacao">
+                            O aplicativo Histórico Empresarial permite ao usuário ter acesso a todos
+                            os fatos e acontecimentos relevantes de uma empresa desde o seu ano
+                            de fundação.
+                        </p>
+                        <div class="row">
+                            <p class="banner__preco">
+                                <span>
+                                    <small class="banner__preco--small">
+                                        R$</small>
+                                    40,00
+                                </span>
+                                <a href="#" class="banner__btn ms-2">Saiba Mais</a>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="selecao">
+                            <div class="filters">
+                                <span class="filter" v-bind:class="{ active: currentFilter === 'Todos' }"
+                                    v-on:click="setFilter('Todos')">
+                                    <i class="fas fa-globe"></i>
+                                    Todos
+                                </span>
+                                <span class="filter" v-bind:class="{ active: currentFilter === 'Profissional' }"
+                                    v-on:click="setFilter('Profissional')">
+                                    <i class="fas fa-briefcase"></i>
+                                    Profissional
+                                </span>
+                                <span class="filter" v-bind:class="{ active: currentFilter === 'Reguladores' }"
+                                    v-on:click="setFilter('Reguladores')">
+                                    <i class="fas fa-university"></i>
+                                    Reguladores
+                                </span>
+                                <span class="filter" v-bind:class="{ active: currentFilter === 'Sócio Ambiental' }"
+                                    v-on:click="setFilter('Sócio Ambiental')">
+                                    <i class="fas fa-tree"></i>
+                                    Sócio Ambiental
+                                </span>
+                                <span class="filter" v-bind:class="{ active: currentFilter === 'Jurídico' }"
+                                    v-on:click="setFilter('Jurídico')">
+                                    <i class="fas fa-gavel"></i>
+                                    Jurídico
+                                </span>
+                                <span class="filter" v-bind:class="{ active: currentFilter === 'Listas Restritivas' }"
+                                    v-on:click="setFilter('Listas Restritivas')">
+                                    <i class="fas fa-ban"></i>
+                                    Listas Restritivas
+                                </span>
+                                <span class="filter" v-bind:class="{ active: currentFilter === 'Mídia / Internet' }"
+                                    v-on:click="setFilter('Mídia / Internet')">
+                                    <i class="fas fa-globe-americas"></i>
+                                    Mídia / Internet
+                                </span>
+                                <span class="filter" v-bind:class="{ active: currentFilter === 'Bens e Imóveis' }"
+                                    v-on:click="setFilter('Bens e Imóveis')">
+                                    <i class="fas fa-gem"></i>
+                                    Bens e Imóveis
+                                </span>
+                                <span class="filter" v-bind:class="{ active: currentFilter === 'Cadastro' }"
+                                    v-on:click="setFilter('Cadastro')">
+                                    <i class="fas fa-male"></i>
+                                    Cadastro
+                                </span>
+                                <span class="filter" v-bind:class="{ active: currentFilter === 'Financeiro' }"
+                                    v-on:click="setFilter('Financeiro')">
+                                    <i class="fas fa-piggy-bank"></i>
+                                    Financeiro
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-3">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <label for="ordenar">Ordenar</label>
+                            </div>
+                            <div class="col-auto">
+                                <select class="form-select form-select-sm" id="ordenar" aria-label="Ordenar">
+                                    <option value="asc" selected>Recente</option>
+                                    <option value="name">Nome</option>
+                                    <option value="desc">Antigos</option>
+                                  </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <transition-group class="row produtos" name="produtos">
+                            <div class="col-12 col-sm-6 col-md-3 produto"
+                                v-if="currentFilter === produto.category || currentFilter === 'Todos'"
+                                v-bind:key="produto.title" v-for="produto in produtos">
+    
+                                <div class="produto-container">
+                                    <i v-bind:class="produto.image"></i>
+                                    <h2 class="produto__titulo">{{produto.title}}</h2>
+                                    <p class="produto__descricao">
+                                        {{produto.description}}
+                                    </p>
+                                    <div class="footer justify-content-between">
+                                        <p class="produto__preco">R$ 29,99</p>
+                                        <a href="" class="produto__btn">Saiba mais</a>
+                                    </div>
+                                </div>
+    
+    
+    
+    
+    
+                            </div>
+                        </transition-group>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/src/script.js"></script>
+</body>
+
+</html>
